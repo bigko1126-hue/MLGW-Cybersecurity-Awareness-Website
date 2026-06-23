@@ -4,24 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity MGLW </title>
-    
-    <!--linking the external CSS file here -->
-    <link rel="designningweb" href="designning website.css">
+    <title>Cybersecurity MGLW</title>
+    <link rel="stylesheet" href="designning website.css">
 </head>
 <body>
     <h1>Awareness in Cybersecurity</h1>
     <p>Cybersecurity page!</p>
-    <div>
-        <p>Topbar</p>
+    <div class="topbar">
+        <span>Topbar</span>
+        <a id="open-checker" href="#">Password Checker</a>
     </div>
-        <div>
+    <div>
         <p>Sidebar</p>
     </div>
-        <div>
+    <div>
         <p>Content</p>
     </div>
-        <!--linking the external JavaScript file here -->
+
+    <section class="password-checker hidden">
+        <h2>Password Strength Checker</h2>
+        <label for="password"><i>Strong passwords consist of at least 12 characters, including uppercase and lowercase letters, numbers, AND special characters.</i><br>Enter a password:</label>
+        <input id="password" type="password" autocomplete="new-password" placeholder="Password123!" />
+        <meter id="strength-meter" min="0" max="100" value="0"></meter>
+        <p id="strength-text">Start typing to see strength.</p>
+        <ul id="strength-feedback"></ul>
+    </section>
+
     <script src="JavaScript.js"></script>
 </body>
 </html>
