@@ -9,19 +9,80 @@
     <!--linking the external CSS file here -->
     <link rel="designningweb" href="designning website.css">
 </head>
+
 <body>
-    <h1>Awareness in Cybersecurity</h1>
-    <p>Cybersecurity page!</p>
-    <div>
-        <p>Topbar</p>
+    <header class="topbar">
+        <div class="brand">
+            <span class="logo">🔒</span>
+            <div>
+                <h1>Cybersecurity Lab</h1>
+                <p>Interactive phishing email simulator</p>
+            </div>
+        </div>
+        <nav>
+            <a href="#simulator">Simulator</a>
+            <a href="#tips">Tips</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <div class="page-grid">
+        <aside class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#simulator">Email Simulator</a></li>
+                <li><a href="#tips">Phishing Tips</a></li>
+                <li><a href="#about">Why it matters</a></li>
+            </ul>
+            <div class="sidebar-card">
+                <h3>Quick guide</h3>
+                <p>Read the email carefully, check the sender, and choose the correct action.</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <section id="simulator" class="panel">
+                <div class="panel-header">
+                    <h2>Phishing Email Simulator</h2>
+                    <p>Practice identifying suspicious emails in a safe environment.</p>
+                </div>
+
+                <div class="email-card" id="email-card">
+                    <div class="email-header">
+                        <span><strong>From:</strong> <span id="email-sender"></span></span>
+                        <span><strong>Subject:</strong> <span id="email-subject"></span></span>
+                    </div>
+                    <div class="email-body" id="email-body"></div>
+                </div>
+
+                <div class="actions">
+                    <button id="btn-safe" class="btn btn-safe">Mark as safe</button>
+                    <button id="btn-phishing" class="btn btn-phishing">Report phishing</button>
+                    <button id="btn-info" class="btn btn-info">Show hint</button>
+                </div>
+
+                <div class="feedback" id="feedback"></div>
+                <button id="btn-next" class="btn btn-next">Next email</button>
+            </section>
+
+            <section id="tips" class="panel feature-panel">
+                <h2>Phishing Detection Tips</h2>
+                <ul>
+                    <li>Verify sender addresses carefully.</li>
+                    <li>Look for urgent or threatening language.</li>
+                    <li>Hover over links before clicking.</li>
+                    <li>Never share passwords or personal details by email.</li>
+                </ul>
+            </section>
+
+            <section id="about" class="panel feature-panel">
+                <h2>Why this matters</h2>
+                <p>Phishing is one of the most common ways attackers gain access to sensitive accounts and systems. Practicing with examples helps build safer habits.</p>
+            </section>
+        </main>
     </div>
-        <div>
-        <p>Sidebar</p>
-    </div>
-        <div>
-        <p>Content</p>
-    </div>
-        <!--linking the external JavaScript file here -->
+
     <script src="JavaScript.js"></script>
+    <script src="lab button.js"></script>
 </body>
 </html>
