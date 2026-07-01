@@ -210,6 +210,7 @@
     <div class="quiz-container">
         <h1>Cybersecurity Quiz</h1>
         <p>How much do you know about cybersecurity?</p>
+        <div id="quizStatus" style="text-align:center; font-weight:700; color:#102043; margin-bottom:16px;">Attempts: 0 · Last score: 0/18</div>
 
         <form id="quizForm">
             <div class="question">
@@ -423,6 +424,53 @@
         const quizForm = document.getElementById('quizForm');
         const result = document.getElementById('result');
         const takeAgainButton = document.getElementById('takeAgain');
+        const quizStatus = document.getElementById('quizStatus');
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        function getStoredModules() {
+            try {
+                const stored = JSON.parse(localStorage.getItem('cyber-awareness-progress') || '[]');
+                return Array.isArray(stored) ? stored : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveModules(modules) {
+            localStorage.setItem('cyber-awareness-progress', JSON.stringify(modules));
+        }
+
+        function markModule(moduleName) {
+            const modules = getStoredModules();
+            if (!modules.includes(moduleName)) {
+                modules.push(moduleName);
+                saveModules(modules);
+            }
+        }
+
+        function getQuizStats() {
+            try {
+                return JSON.parse(localStorage.getItem('cyber-awareness-quiz') || '{"attempts":0,"bestScore":0,"lastScore":0,"totalQuestions":18}');
+            } catch (error) {
+                return { attempts: 0, bestScore: 0, lastScore: 0, totalQuestions: 18 };
+            }
+        }
+
+        function saveQuizStats(stats) {
+            localStorage.setItem('cyber-awareness-quiz', JSON.stringify(stats));
+        }
+
+        function updateQuizStatus(stats) {
+            if (quizStatus) {
+                quizStatus.textContent = `Attempts: ${stats.attempts} · Last score: ${stats.lastScore}/${stats.totalQuestions}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            markModule('Cybersecurity quiz');
+            const stats = getQuizStats();
+            updateQuizStatus(stats);
+        });
 
         quizForm.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -435,7 +483,15 @@
                 }
             }
 
-            result.textContent = `You scored ${score} out of ${Object.keys(correctAnswers).length}.`;
+            const stats = getQuizStats();
+            stats.attempts += 1;
+            stats.lastScore = score;
+            stats.bestScore = Math.max(stats.bestScore, score);
+            stats.totalQuestions = totalQuestions;
+            saveQuizStats(stats);
+            updateQuizStatus(stats);
+
+            result.innerHTML = `You scored ${score} out of ${totalQuestions}.<br>Attempts: ${stats.attempts} · Best score: ${stats.bestScore}/${totalQuestions}`;
             takeAgainButton.style.display = 'inline-block';
         });
 

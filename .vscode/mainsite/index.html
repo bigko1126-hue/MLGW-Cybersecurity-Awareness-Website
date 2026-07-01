@@ -103,5 +103,47 @@
 
     <script src="JavaScript.js"></script>
     <script src="lab button.js"></script>
+    <script>
+        const mainSiteModules = {
+            simulator: 'Phishing simulator',
+            tips: 'Phishing tips',
+            about: 'Why this matters'
+        };
+
+        function getStoredModules() {
+            try {
+                const stored = JSON.parse(localStorage.getItem('cyber-awareness-progress') || '[]');
+                return Array.isArray(stored) ? stored : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+        function saveModules(modules) {
+            localStorage.setItem('cyber-awareness-progress', JSON.stringify(modules));
+        }
+
+        function markModule(moduleName) {
+            const modules = getStoredModules();
+            if (!modules.includes(moduleName)) {
+                modules.push(moduleName);
+                saveModules(modules);
+            }
+        }
+
+        function markCurrentFeature() {
+            const hash = location.hash.replace('#', '');
+            if (mainSiteModules[hash]) {
+                markModule(mainSiteModules[hash]);
+                return;
+            }
+            markModule('Phishing simulator');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            markCurrentFeature();
+            window.addEventListener('hashchange', markCurrentFeature);
+        });
+    </script>
 </body>
 </html>

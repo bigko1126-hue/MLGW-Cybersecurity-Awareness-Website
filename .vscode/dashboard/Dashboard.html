@@ -112,6 +112,23 @@
       font-weight: 700;
     }
 
+    .module-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .module-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f7faff;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
     @media (max-width: 760px) {
       .content-grid { grid-template-columns: 1fr; }
       .dashboard-shell { padding: 14px; }
@@ -141,13 +158,14 @@
       </article>
       <article class="card">
         <h3>Completed modules</h3>
-        <div class="metric">3/5</div>
-        <p>Phishing awareness, secure passwords, and safe browsing are done.</p>
+        <div class="metric" id="completedModulesMetric">0/5</div>
+        <p id="moduleSummary">Visit the featured learning tools to build your progress.</p>
+        <ul class="module-list" id="moduleList"></ul>
       </article>
       <article class="card">
-        <h3>Next focus</h3>
-        <div class="metric">Password strength</div>
-        <p>Review a few strong password examples before your next challenge.</p>
+        <h3>Quiz performance</h3>
+        <div class="metric" id="quizScoreMetric">—</div>
+        <p id="quizSummary">Take the quiz to save your first score.</p>
       </article>
     </section>
 
@@ -183,5 +201,91 @@
       </article>
     </section>
   </div>
+
+  <script>
+    const moduleStorageKey = 'cyber-awareness-progress';
+    const quizStorageKey = 'cyber-awareness-quiz';
+    const moduleNames = [
+      'Phishing simulator',
+      'Phishing tips',
+      'Password checker',
+      'Cybersecurity quiz',
+      'Security dashboard'
+    ];
+
+    function getStoredModules() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(moduleStorageKey) || '[]');
+        return Array.isArray(stored) ? stored : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveModules(modules) {
+      localStorage.setItem(moduleStorageKey, JSON.stringify(modules));
+    }
+
+    function markModule(moduleName) {
+      const modules = getStoredModules();
+      if (!modules.includes(moduleName)) {
+        modules.push(moduleName);
+        saveModules(modules);
+      }
+      return modules;
+    }
+
+    function getQuizStats() {
+      try {
+        return JSON.parse(localStorage.getItem(quizStorageKey) || '{"attempts":0,"bestScore":0,"lastScore":0,"totalQuestions":18}');
+      } catch (error) {
+        return { attempts: 0, bestScore: 0, lastScore: 0, totalQuestions: 18 };
+      }
+    }
+
+    function renderDashboard() {
+      const modules = getStoredModules();
+      const completedModulesMetric = document.getElementById('completedModulesMetric');
+      const moduleSummary = document.getElementById('moduleSummary');
+      const moduleList = document.getElementById('moduleList');
+      const quizScoreMetric = document.getElementById('quizScoreMetric');
+      const quizSummary = document.getElementById('quizSummary');
+      const quizStats = getQuizStats();
+
+      if (completedModulesMetric) {
+        completedModulesMetric.textContent = `${modules.length}/${moduleNames.length}`;
+      }
+
+      if (moduleSummary) {
+        moduleSummary.textContent = modules.length >= moduleNames.length
+          ? 'You have completed every featured module.'
+          : `${modules.length} of ${moduleNames.length} modules completed. Keep exploring to unlock the full path.`;
+      }
+
+      if (moduleList) {
+        moduleList.innerHTML = '';
+        moduleNames.forEach((moduleName) => {
+          const item = document.createElement('li');
+          item.textContent = modules.includes(moduleName) ? `✓ ${moduleName}` : `• ${moduleName}`;
+          moduleList.appendChild(item);
+        });
+      }
+
+      if (quizScoreMetric) {
+        quizScoreMetric.textContent = quizStats.attempts > 0 ? `${quizStats.bestScore}/${quizStats.totalQuestions}` : '—';
+      }
+
+      if (quizSummary) {
+        quizSummary.textContent = quizStats.attempts > 0
+          ? `Last score: ${quizStats.lastScore}/${quizStats.totalQuestions} · Attempts: ${quizStats.attempts}`
+          : 'Take the quiz to save your first score.';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      markModule('Security dashboard');
+      renderDashboard();
+    });
+  </script>
 </body>
 </html>

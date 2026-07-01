@@ -101,6 +101,31 @@
   </div>
 
   <script>
+    function getStoredModules() {
+      try {
+        const stored = JSON.parse(localStorage.getItem('cyber-awareness-progress') || '[]');
+        return Array.isArray(stored) ? stored : [];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function saveModules(modules) {
+      localStorage.setItem('cyber-awareness-progress', JSON.stringify(modules));
+    }
+
+    function markModule(moduleName) {
+      const modules = getStoredModules();
+      if (!modules.includes(moduleName)) {
+        modules.push(moduleName);
+        saveModules(modules);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      markModule('Password checker');
+    });
+
     const passwordInput = document.getElementById('password');
     const meterBar = document.getElementById('meterBar');
     const result = document.getElementById('result');
