@@ -1,93 +1,103 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity MGLW </title>
-    
-    <!--linking the external CSS file here -->
+    <title>Cybersecurity Lab</title>
     <link rel="stylesheet" href="designning website.css">
 </head>
-
 <body>
-    <header class="topbar">
-        <div class="brand">
-            <span class="logo">🔒</span>
-            <div>
-                <h1>Cybersecurity Lab</h1>
-                <p>Interactive phishing email simulator</p>
+    <div class="site-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="logo">🔐</div>
+                <div>
+                    <h1>Cybersecurity Lab</h1>
+                    <p>Practice safe habits through interactive learning.</p>
+                </div>
             </div>
-        </div>
-        <nav>
-            <a href="#simulator">Simulator</a>
-            <a href="#tips">Tips</a>
-            <a href="#about">About</a>
-            <a href="../Quiz/Cybersecurity%20Quiz.html">Quiz</a>
-            <a href="../dashboard/Dashboard.html">Dashboard</a>
-        </nav>
-    </header>
+            <nav class="topnav">
+                <a href="#simulator">Simulator</a>
+                <a href="#tips">Tips</a>
+                <a href="#about">About</a>
+                <a href="../Quiz/Cybersecurity%20Quiz.html">Quiz</a>
+                <a href="../dashboard/Dashboard.html">Dashboard</a>
+                <a href="../password-checker/index.html">Password Checker</a>
+            </nav>
+        </header>
 
-    <div class="page-grid">
-        <aside class="sidebar">
-            <h2>Navigation</h2>
-            <ul>
-                <li><a href="#simulator">Email Simulator</a></li>
-                <li><a href="#tips">Phishing Tips</a></li>
-                <li><a href="#about">Why it matters</a></li>
-            </ul>
-            <div class="sidebar-card">
-                <h3>Quick guide</h3>
-                <p>Read the email carefully, check the sender, and choose the correct action.</p>
-            </div>
-            <div class="sidebar-card">
-                <h3>More features</h3>
-                <ul>
-                    <li><a href="../Quiz/Cybersecurity%20Quiz.html">Take the quiz</a></li>
-                    <li><a href="../dashboard/Dashboard.html">Open the dashboard</a></li>
-                </ul>
-            </div>
-        </aside>
-
-        <main class="content">
-            <section id="simulator" class="panel">
-                <div class="panel-header">
-                    <h2>Phishing Email Simulator</h2>
-                    <p>Practice identifying suspicious emails in a safe environment.</p>
+        <main class="page-grid">
+            <aside class="sidebar">
+                <div class="sidebar-card highlight-card">
+                    <p class="eyebrow">Start here</p>
+                    <h2>Build stronger cyber habits</h2>
+                    <p>Use the simulator, review phishing tips, and test your knowledge in a few minutes.</p>
+                    <a class="cta-link" href="../Quiz/Cybersecurity%20Quiz.html">Take the quiz</a>
                 </div>
 
-                <div class="email-card" id="email-card">
-                    <div class="email-header">
-                        <span><strong>From:</strong> <span id="email-sender"></span></span>
-                        <span><strong>Subject:</strong> <span id="email-subject"></span></span>
+                <div class="sidebar-card">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#simulator">Email simulator</a></li>
+                        <li><a href="#tips">Phishing tips</a></li>
+                        <li><a href="../dashboard/Dashboard.html">Security dashboard</a></li>
+                        <li><a href="../password-checker/index.html">Password strength checker</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="content">
+                <section class="hero-panel">
+                    <div>
+                        <p class="eyebrow">Interactive learning hub</p>
+                        <h2>Stay alert, think before you click, and protect your accounts.</h2>
+                        <p>These lessons are designed to make cybersecurity feel practical, clear, and easy to apply.</p>
                     </div>
-                    <div class="email-body" id="email-body"></div>
-                </div>
+                    <div class="hero-actions">
+                        <a class="primary-btn" href="../password-checker/index.html">Check a password</a>
+                        <a class="secondary-btn" href="../dashboard/Dashboard.html">View dashboard</a>
+                    </div>
+                </section>
 
-                <div class="actions">
-                    <button id="btn-safe" class="btn btn-safe">Mark as safe</button>
-                    <button id="btn-phishing" class="btn btn-phishing">Report phishing</button>
-                    <button id="btn-info" class="btn btn-info">Show hint</button>
-                </div>
+                <section id="simulator" class="panel">
+                    <div class="panel-header">
+                        <h2>Phishing Email Simulator</h2>
+                        <p>Practice spotting suspicious messages in a safe environment.</p>
+                    </div>
 
-                <div class="feedback" id="feedback"></div>
-                <button id="btn-next" class="btn btn-next">Next email</button>
-            </section>
+                    <div class="email-card" id="email-card">
+                        <div class="email-header">
+                            <span><strong>From:</strong> <span id="email-sender"></span></span>
+                            <span><strong>Subject:</strong> <span id="email-subject"></span></span>
+                        </div>
+                        <div class="email-body" id="email-body"></div>
+                    </div>
 
-            <section id="tips" class="panel feature-panel">
-                <h2>Phishing Detection Tips</h2>
-                <ul>
-                    <li>Verify sender addresses carefully.</li>
-                    <li>Look for urgent or threatening language.</li>
-                    <li>Hover over links before clicking.</li>
-                    <li>Never share passwords or personal details by email.</li>
-                </ul>
-            </section>
+                    <div class="actions">
+                        <button id="btn-safe" class="btn btn-safe">Mark as safe</button>
+                        <button id="btn-phishing" class="btn btn-phishing">Report phishing</button>
+                        <button id="btn-info" class="btn btn-info">Show hint</button>
+                    </div>
 
-            <section id="about" class="panel feature-panel">
-                <h2>Why this matters</h2>
-                <p>Phishing is one of the most common ways attackers gain access to sensitive accounts and systems. Practicing with examples helps build safer habits.</p>
-            </section>
+                    <div class="feedback" id="feedback"></div>
+                    <button id="btn-next" class="btn btn-next">Next email</button>
+                </section>
+
+                <section id="tips" class="panel feature-panel">
+                    <h2>Phishing Detection Tips</h2>
+                    <ul>
+                        <li>Verify sender addresses carefully.</li>
+                        <li>Look for urgent or threatening language.</li>
+                        <li>Hover over links before clicking.</li>
+                        <li>Never share passwords or personal details by email.</li>
+                    </ul>
+                </section>
+
+                <section id="about" class="panel feature-panel">
+                    <h2>Why this matters</h2>
+                    <p>Phishing remains one of the most common ways attackers gain access to sensitive accounts and systems. Practicing with realistic examples helps build safer habits.</p>
+                </section>
+            </div>
         </main>
     </div>
 
