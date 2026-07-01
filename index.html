@@ -27,6 +27,95 @@
         .topnav { display: flex; flex-wrap: wrap; gap: 12px; }
         .topnav a { padding: 10px 14px; border-radius: 999px; color: var(--muted); transition: background 0.2s ease, color 0.2s ease; }
         .topnav a:hover { background: #e8f0ff; color: var(--accent); }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.5;
+            color: #222;
+            background: #f7f9fc;
+        }
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        }
+        .topbar a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .topbar a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+        h1 {
+            margin-bottom: 0.5rem;
+        }
+        .password-checker {
+            width: 100%;
+            max-width: none;
+            padding: 20px;
+            margin-top: 24px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+        }
+        .password-checker h2 {
+            margin-top: 0;
+        }
+        .password-checker label,
+        .password-checker p {
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        .password-checker input {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            border: 1px solid #ccd4e3;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .password-checker meter {
+            width: 100%;
+            height: 16px;
+            appearance: none;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            background: #e5ecf4;
+        }
+        .password-checker meter::-webkit-meter-bar {
+            background: #e5ecf4;
+            border-radius: 8px;
+        }
+        .password-checker meter::-webkit-meter-optimum-value {
+            background: #4caf50;
+            border-radius: 8px;
+        }
+        .password-checker meter.strength-moderate::-webkit-meter-optimum-value {
+            background: #ffb300;
+        }
+        .password-checker meter.strength-weak::-webkit-meter-optimum-value {
+            background: #f44336;
+        }
+        #strength-text {
+            margin: 0 0 12px;
+            font-weight: bold;
+        }
+        #strength-feedback {
+            margin: 0;
+            padding-left: 18px;
+        }
+        #strength-feedback li {
+            margin-bottom: 6px;
+        }
         .page-shell { max-width: 1180px; margin: 0 auto; padding: 28px clamp(20px, 4vw, 40px) 50px; }
         .hero { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; background: var(--panel); border-radius: 28px; padding: clamp(24px, 4vw, 36px); box-shadow: var(--shadow); border: 1px solid var(--border); }
         .eyebrow { display: inline-block; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); font-weight: 700; font-size: 0.8rem; }
@@ -81,9 +170,9 @@
         </div>
         <nav class="topnav">
             <a href="#simulator">Simulator</a>
-            <a href="#checker">Password Checker</a>
+            <a id="open-checker" href="#">Password Checker</a>
             <a href="#resources">Resources</a>
-            <a href="../Dashboard.html">Dashboard</a>
+            <a href="Dashboard.html">Dashboard</a>
         </nav>
     </header>
 
@@ -95,7 +184,7 @@
                 <p>Explore a phishing simulator, test your password strength, and jump into quizzes and training labs designed to make security feel practical and approachable.</p>
                 <div class="hero-actions">
                     <a class="btn btn-primary" href="#simulator">Try the simulator</a>
-                    <a class="btn btn-secondary" href="../Cybersecurity%20Quiz.html">Take the quiz</a>
+                    <a class="btn btn-secondary" href="Cybersecurity%20Quiz.html">Take the quiz</a>
                 </div>
             </div>
             <div class="hero-card">
@@ -130,12 +219,12 @@
             <div class="feedback" id="feedback">Choose the best response for this email.</div>
         </section>
 
-        <section id="checker" class="panel">
+        <section id="checker" class="password-checker panel hidden">
             <h2>Password strength checker</h2>
             <p>Type a password to see how strong it is and what changes would improve it.</p>
             <div class="password-card">
                 <label for="password">Enter a password:</label>
-                <input id="password" type="password" autocomplete="new-password" placeholder="Try Password123!" />
+                <input id="password" type="password" autocomplete="new-password" placeholder="Password!123" />
                 <meter id="strength-meter" min="0" max="100" value="0"></meter>
                 <p id="strength-text">Start typing to see strength.</p>
                 <ul id="strength-feedback"></ul>
@@ -145,14 +234,14 @@
         <section id="resources" class="panel">
             <h2>Continue your learning</h2>
             <div class="resource-links">
-                <a class="resource-card" href="../Dashboard.html"><strong>Security dashboard</strong><span>Review practical tips and highlights in one view.</span></a>
-                <a class="resource-card" href="../Cybersecurity%20Quiz.html"><strong>Knowledge quiz</strong><span>Test what you have learned with a short assessment.</span></a>
-                <a class="resource-card" href="../Playground%20workspace/Phishing%20lab%20face.html"><strong>Interactive lab</strong><span>Explore a guided example of phishing red flags.</span></a>
+                <a class="resource-card" href="Dashboard.html"><strong>Security dashboard</strong><span>Review practical tips and highlights in one view.</span></a>
+                <a class="resource-card" href="Cybersecurity%20Quiz.html"><strong>Knowledge quiz</strong><span>Test what you have learned with a short assessment.</span></a>
+                <a class="resource-card" href="Playground%20workspace/Phishing%20lab%20face.html"><strong>Interactive lab</strong><span>Explore a guided example of phishing red flags.</span></a>
             </div>
         </section>
     </main>
 
     <footer><p>MLGW Cybersecurity Awareness Hub • Built for safe, practical learning.</p></footer>
-    <script src="JavaScript.js"></script>
+    <script src=".vscode/JavaScript.js"></script>
 </body>
 </html>
