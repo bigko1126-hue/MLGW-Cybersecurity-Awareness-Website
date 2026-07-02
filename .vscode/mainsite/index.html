@@ -79,9 +79,21 @@
                         <button id="btn-info" class="btn btn-info">Show hint</button>
                     </div>
 
-                    <div class="feedback" id="feedback"></div>
-                    <button id="btn-next" class="btn btn-next">Next email</button>
-                </section>
+        <!-- RIGHT SIDE: The Training Dashboard -->
+        <div class="sidebar">
+            <h2>🛡️ Security Lab Panel</h2>
+            <p>Read the email on the left. Can you spot why it is dangerous?</p>
+            
+            <button id="analyze-btn">Scan for Phishing Red Flags</button>
+            
+            <!-- Tip Box that changes dynamically -->
+            <div id="tip-box" class="hidden">
+                <h3>🔍 Threat Analysis:</h3>
+                <p id="tip-text">Click any highlighted item in the email to read the security breakdown.</p>
+            </div>
+        </div>
+    </div>
+<script src="lab button.js"></script>
 
                 <section id="tips" class="panel feature-panel">
                     <h2>Phishing Detection Tips</h2>
