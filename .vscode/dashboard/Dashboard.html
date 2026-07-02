@@ -216,14 +216,16 @@
     function getStoredModules() {
       try {
         const stored = JSON.parse(localStorage.getItem(moduleStorageKey) || '[]');
-        return Array.isArray(stored) ? stored : [];
+        if (!Array.isArray(stored)) return [];
+        return [...new Set(stored.map(String).filter(Boolean))];
       } catch (error) {
         return [];
       }
     }
 
     function saveModules(modules) {
-      localStorage.setItem(moduleStorageKey, JSON.stringify(modules));
+      const uniqueModules = [...new Set((Array.isArray(modules) ? modules : []).map(String).filter(Boolean))];
+      localStorage.setItem(moduleStorageKey, JSON.stringify(uniqueModules));
     }
 
     function markModule(moduleName) {
