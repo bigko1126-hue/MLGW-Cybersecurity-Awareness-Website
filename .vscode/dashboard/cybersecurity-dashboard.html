@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cybersecurity Tips Dashboard</title>
+  <link rel="stylesheet" href="cybersecurity-dashboard.css" />
+</head>
+<body>
+  <main class="dashboard-shell">
+    <header class="dashboard-header">
+      <div>
+        <p class="eyebrow">Cybersecurity Awareness</p>
+        <h1>Security Tips Dashboard</h1>
+        <p class="subtitle">Quick, practical guidance to keep systems safe and reduce cyber risk.</p>
+      </div>
+      <button id="themeToggle" class="theme-toggle">Dark Mode</button>
+    </header>
+
+    <section class="overview-grid">
+      <article class="stat-card">
+        <span class="stat-label">Total Tips</span>
+        <strong id="tipCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Categories</span>
+        <strong id="categoryCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Recommended Focus</span>
+        <strong>Passwords & Phishing</strong>
+      </article>
+      <article class="stat-card highlight-card">
+        <span class="stat-label">Tip of the Day</span>
+        <p>Use a password manager and enable multi-factor authentication everywhere possible.</p>
+      </article>
+    </section>
+
+    <section class="control-panel">
+      <div class="search-box">
+        <label for="searchInput">Search tips</label>
+        <input id="searchInput" type="search" placeholder="Search by keyword or topic" />
+      </div>
+      <div class="filter-buttons" aria-label="Filter tips by category">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="passwords">Passwords</button>
+        <button class="filter-btn" data-category="phishing">Phishing</button>
+        <button class="filter-btn" data-category="network">Network</button>
+        <button class="filter-btn" data-category="devices">Devices</button>
+        <button class="filter-btn" data-category="practice">Best Practices</button>
+      </div>
+    </section>
+
+    <section class="tips-grid" id="tipsGrid"></section>
+  </main>
+
+  <script src="cybersecurity-dashboard.js"></script>
+</body>
+</html>
