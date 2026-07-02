@@ -6,7 +6,7 @@
   --text: #14213d;
   --muted: #5e6d89;
   --accent: #2563eb;
-  --accent-2: #3b82f6;
+  --accent-2: #0a0c74ee;
   --border: #dfe8ff;
   --shadow: 0 24px 60px rgba(20, 33, 61, 0.08);
 }
@@ -50,7 +50,7 @@ body {
   height: 48px;
   border-radius: 14px;
   font-size: 1.35rem;
-  background: linear-gradient(135deg, var(--accent), #60a5fa);
+  background: linear-gradient(135deg, var(--accent), #a5a5a5);
   color: white;
 }
 
@@ -227,7 +227,7 @@ body {
 
 .btn-safe { background: #dcfce7; color: #166534; }
 .btn-phishing { background: #fee2e2; color: #b91c1c; }
-.btn-info { background: #dbeafe; color: #1d4ed8; }
+.btn-info { background: #dbeafe; color: #7c8292; }
 .btn-next { background: var(--accent); color: white; }
 
 .feedback {

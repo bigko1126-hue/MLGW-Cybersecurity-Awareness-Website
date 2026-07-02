@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybersecurity Lab</title>
     <link rel="stylesheet" href="designning website.css">
+     <link rel="stylesheet" href="lab style.css">
 </head>
 <body>
     <div class="site-shell">
@@ -60,24 +61,60 @@
                 </section>
 
                 <section id="simulator" class="panel">
-                    <div class="panel-header">
-                        <h2>Phishing Email Simulator</h2>
-                        <p>Practice spotting suspicious messages in a safe environment.</p>
-                    </div>
+                     <div class="app-container">
+        <!-- LEFT SIDE: The Fake Email Client -->
+        <div class="email-client">
+            <div class="email-header">
+                <h2>📥 Secure Inbox</h2>
+            </div>
+            
+            <div class="email-body">
+                <!-- Red Flag 1: Sender Address -->
+                <p class="meta-data">
+                    <strong>From:</strong> 
+                    <span class="phish-element" data-tip="Look closely! This uses 'secu-re-bank.com' instead of the real bank website. It also uses a free Gmail account.">
+                        Bank Security &lt;security-alert-update99@gmail.com&gt;
+                    </span>
+                </p>
+                
+                <p class="meta-data"><strong>Subject:</strong> URGENT: Your account is locked!!!</p>
+                <hr>
 
-                    <div class="email-card" id="email-card">
-                        <div class="email-header">
-                            <span><strong>From:</strong> <span id="email-sender"></span></span>
-                            <span><strong>Subject:</strong> <span id="email-subject"></span></span>
-                        </div>
-                        <div class="email-body" id="email-body"></div>
-                    </div>
+                <!-- Red Flag 2: Generic Greeting & Scare Tactics -->
+                <p class="email-text">
+                    <span class="phish-element" data-tip="Scammers use generic greetings like 'Dear Customer' because they don't actually know your name.">Dear Customer,</span>
+                </p>
+                
+                <p class="email-text">
+                    <span class="phish-element" data-tip="Artificial urgency! Scammers panic you with short deadlines so you act before thinking.">We detected suspicious logins. You must update your password within 24 hours or your money will be frozen forever!</span>
+                </p>
 
-                    <div class="actions">
-                        <button id="btn-safe" class="btn btn-safe">Mark as safe</button>
-                        <button id="btn-phishing" class="btn btn-phishing">Report phishing</button>
-                        <button id="btn-info" class="btn btn-info">Show hint</button>
-                    </div>
+                <!-- Red Flag 3: Fake Link Button -->
+                <div class="btn-container">
+                    <button class="phish-btn phish-element" data-tip="Hovering reveals this goes to a sketchy site ('http://steal-your-login.net') instead of a secure 'https://' bank URL.">
+                        Verify Account Details Here
+                    </button>
+                </div>
+
+                <p class="email-text">Thank you,<br>The Bank Support Team</p>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: The Training Dashboard -->
+        <div class="sidebar">
+            <h2>🛡️ Security Lab Panel</h2>
+            <p>Read the email on the left. Can you spot why it is dangerous?</p>
+            
+            <button id="analyze-btn">Scan for Phishing Red Flags</button>
+            
+            <!-- Tip Box that changes dynamically -->
+            <div id="tip-box" class="hidden">
+                <h3>🔍 Threat Analysis:</h3>
+                <p id="tip-text">Click any highlighted item in the email to read the security breakdown.</p>
+            </div>
+        </div>
+    </div>
+        <script src="lab button.js"></script>
 
                     <div class="feedback" id="feedback"></div>
                     <button id="btn-next" class="btn btn-next">Next email</button>
