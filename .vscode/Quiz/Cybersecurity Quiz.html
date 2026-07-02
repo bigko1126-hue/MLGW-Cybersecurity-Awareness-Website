@@ -453,6 +453,21 @@
         const result = document.getElementById('result');
         const takeAgainButton = document.getElementById('takeAgain');
 
+        function saveQuizResult(score, totalQuestions) {
+            const quizStorageKey = 'cyber-awareness-quiz';
+            const currentStats = JSON.parse(localStorage.getItem(quizStorageKey) || '{"attempts":0,"bestScore":0,"lastScore":0,"totalQuestions":18}');
+            const attempts = (Number.isInteger(currentStats.attempts) ? currentStats.attempts : 0) + 1;
+            const lastScore = score;
+            const bestScore = Math.max(Number.isInteger(currentStats.bestScore) ? currentStats.bestScore : 0, score);
+            const normalized = {
+                attempts,
+                bestScore,
+                lastScore,
+                totalQuestions
+            };
+            localStorage.setItem(quizStorageKey, JSON.stringify(normalized));
+        }
+
         quizForm.addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -464,6 +479,7 @@
                 }
             }
 
+            saveQuizResult(score, Object.keys(correctAnswers).length);
             result.textContent = `You scored ${score} out of ${Object.keys(correctAnswers).length}.`;
             takeAgainButton.style.display = 'inline-block';
         });
