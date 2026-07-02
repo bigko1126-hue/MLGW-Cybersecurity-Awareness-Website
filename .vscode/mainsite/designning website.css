@@ -2,11 +2,11 @@
   color-scheme: light;
   --bg: #5e60642d;
   --surface: #ffffff;
-  --surface-2: #f9fbff;
+  --surface-2: #ffffff;
   --text: #14213d;
-  --muted: #5e6d89;
-  --accent: #2563eb;
-  --accent-2: #3b82f6;
+  --muted: #0051e7;
+  --accent: #f94913;
+  --accent-2: #f19305ee;
   --border: #dfe8ff;
   --shadow: 0 24px 60px rgba(20, 33, 61, 0.08);
 }
@@ -16,7 +16,7 @@ body {
   margin: 0;
   font-family: Inter, "Segoe UI", Arial, sans-serif;
   color: var(--text);
-  background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
 }
 
 .site-shell {
@@ -50,7 +50,7 @@ body {
   height: 48px;
   border-radius: 14px;
   font-size: 1.35rem;
-  background: linear-gradient(135deg, var(--accent), #60a5fa);
+  background: linear-gradient(135deg, var(--accent), #a5a5a5);
   color: white;
 }
 
@@ -99,7 +99,7 @@ body {
 .sidebar-card,
 .panel,
 .hero-panel {
-  background: var(--surface);
+  background: color(#000000);
   border: 1px solid var(--border);
   border-radius: 24px;
   box-shadow: var(--shadow);
@@ -139,7 +139,7 @@ body {
 }
 
 .sidebar-card a {
-  color: var(--accent);
+  color: var(--surface);
   text-decoration: none;
 }
 
@@ -227,7 +227,7 @@ body {
 
 .btn-safe { background: #dcfce7; color: #166534; }
 .btn-phishing { background: #fee2e2; color: #b91c1c; }
-.btn-info { background: #dbeafe; color: #1d4ed8; }
+.btn-info { background: #dbeafe; color: #7c8292; }
 .btn-next { background: var(--accent); color: white; }
 
 .feedback {
