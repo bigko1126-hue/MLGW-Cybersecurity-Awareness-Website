@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybersecurity Lab</title>
     <link rel="stylesheet" href="designning website.css">
+    <link rel="stylesheet" href="../simulator/Playground%20workspace/lab%20style.css">
+    <script src="../simulator/Playground%20workspace/lab%20button.js" defer></script>
 </head>
 <body>
     <div class="site-shell">
@@ -62,38 +64,56 @@
                 <section id="simulator" class="panel">
                     <div class="panel-header">
                         <h2>Phishing Email Simulator</h2>
-                        <p>Practice spotting suspicious messages in a safe environment.</p>
+                        <p>Review the sample email below and use the analysis panel to spot the warning signs.</p>
                     </div>
+                    <div class="app-container">
+                        <div class="email-client">
+                            <div class="email-header">
+                                <h2>📥 Secure Inbox</h2>
+                            </div>
 
-                    <div class="email-card" id="email-card">
-                        <div class="email-header">
-                            <span><strong>From:</strong> <span id="email-sender"></span></span>
-                            <span><strong>Subject:</strong> <span id="email-subject"></span></span>
+                            <div class="email-body">
+                                <p class="meta-data">
+                                    <strong>From:</strong>
+                                    <span class="phish-element" data-tip="This uses a personal Gmail address and a suspicious sender name instead of a verified bank domain.">
+                                        Bank Security &lt;security-alert-update99@gmail.com&gt;
+                                    </span>
+                                </p>
+
+                                <p class="meta-data"><strong>Subject:</strong> URGENT: Your account is locked!!!</p>
+                                <hr>
+
+                                <p class="email-text">
+                                    <span class="phish-element" data-tip="Scammers often use generic greetings because they do not know your real name.">Dear Customer,</span>
+                                </p>
+
+                                <p class="email-text">
+                                    <span class="phish-element" data-tip="Artificial urgency is a common phishing tactic used to make you act quickly without thinking.">We detected suspicious logins. You must update your password within 24 hours or your money will be frozen forever!</span>
+                                </p>
+
+                                <div class="btn-container">
+                                    <button class="phish-btn phish-element" data-tip="The button leads to a suspicious URL rather than a verified bank website.">
+                                        Verify Account Details Here
+                                    </button>
+                                </div>
+
+                                <p class="email-text">Thank you,<br>The Bank Support Team</p>
+                            </div>
                         </div>
-                        <div class="email-body" id="email-body"></div>
-                    </div>
 
-                    <div class="actions">
-                        <button id="btn-safe" class="btn btn-safe">Mark as safe</button>
-                        <button id="btn-phishing" class="btn btn-phishing">Report phishing</button>
-                        <button id="btn-info" class="btn btn-info">Show hint</button>
-                    </div>
+                        <div class="sidebar">
+                            <h2>🛡️ Security Lab Panel</h2>
+                            <p>Read the email carefully. Can you spot why it is dangerous?</p>
 
-        <!-- RIGHT SIDE: The Training Dashboard -->
-        <div class="sidebar">
-            <h2>🛡️ Security Lab Panel</h2>
-            <p>Read the email on the left. Can you spot why it is dangerous?</p>
-            
-            <button id="analyze-btn">Scan for Phishing Red Flags</button>
-            
-            <!-- Tip Box that changes dynamically -->
-            <div id="tip-box" class="hidden">
-                <h3>🔍 Threat Analysis:</h3>
-                <p id="tip-text">Click any highlighted item in the email to read the security breakdown.</p>
-            </div>
-        </div>
-    </div>
-<script src="lab button.js"></script>
+                            <button id="analyze-btn">Scan for phishing red flags</button>
+
+                            <div id="tip-box" class="hidden">
+                                <h3>🔍 Threat Analysis</h3>
+                                <p id="tip-text">Click any highlighted item in the email to reveal the explanation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section id="tips" class="panel feature-panel">
                     <h2>Phishing Detection Tips</h2>
@@ -114,7 +134,6 @@
     </div>
 
     <script src="JavaScript.js"></script>
-    <script src="lab button.js"></script>
     <script>
         const mainSiteModules = {
             simulator: 'Phishing simulator',

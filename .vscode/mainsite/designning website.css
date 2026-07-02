@@ -246,3 +246,107 @@ body {
   .topbar { flex-direction: column; align-items: flex-start; }
   .hero-panel, .panel, .sidebar-card { padding: 18px; }
 }
+.panel .app-container {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.panel .email-client,
+.panel .sidebar {
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 36px rgba(20, 33, 61, 0.08);
+}
+
+.panel .email-client {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  overflow: hidden;
+}
+
+.panel .email-header {
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: white;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.panel .email-body {
+  padding: 20px 18px 22px;
+}
+
+.panel .meta-data,
+.panel .email-text {
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.panel .phish-element {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: #fff7ed;
+  border: 1px dashed #fb923c;
+  cursor: help;
+}
+
+.panel .phish-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 700;
+  box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
+}
+
+.panel .sidebar {
+  background: linear-gradient(135deg, #14213d 0%, #1f3c88 100%);
+  color: white;
+  padding: 20px;
+}
+
+.panel .sidebar h2 {
+  color: #dbeafe;
+  margin-bottom: 8px;
+}
+
+.panel .sidebar p {
+  color: #dbeafe;
+}
+
+.panel #analyze-btn {
+  width: 100%;
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 14px;
+  font-weight: 700;
+  margin: 16px 0;
+  cursor: pointer;
+}
+
+.panel #tip-box {
+  background: rgba(255,255,255,0.12);
+  border-left: 4px solid #60a5fa;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 12px;
+}
+
+.panel #tip-box h3 {
+  margin: 0 0 6px;
+  color: #bfdbfe;
+}
+
+.panel .hidden {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .panel .app-container {
+    grid-template-columns: 1fr;
+  }
+}
