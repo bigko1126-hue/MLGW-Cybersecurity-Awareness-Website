@@ -34,6 +34,34 @@
             opacity: 0;
         }
         
+        .topbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 16px 30px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .topnav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .topnav a {
+            text-decoration: none;
+            color: #132144;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .topnav a:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
         /* New styling to center the logo container */
         .logo-container {
             display: flex;
@@ -198,8 +226,14 @@
 </head>
 <body>
 
+    <header class="topbar">
+        <nav class="topnav">
+            <a href="../mainsite/index.html">Home</a>
+        </nav>
+    </header>
+
     <div class="logo-container">
-        <img src="https://mail.google.com/mail/u/0?ui=2&ik=871929d6ff&attid=0.1&permmsgid=msg-f:1869345710073963603&th=19f14004e35be453&view=att&disp=safe&realattid=19f13ff4f321895a5562&zw" alt="MLGW Logo"/>
+        <img src="MLGW-logo-black-color.png" alt="MLGW Logo"/>
     </div>
 
     <div class="quiz-container">

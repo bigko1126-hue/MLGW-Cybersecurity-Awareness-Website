@@ -144,16 +144,14 @@
         <p>Track your learning progress and build safer habits.</p>
       </div>
       <nav class="topnav">
-        <a href="../mainsite/index.html">Main site</a>
-        <a href="../Quiz/Cybersecurity%20Quiz.html">Quiz</a>
-        <a href="../password-checker/index.html">Password checker</a>
+        <a href="../mainsite/index.html">Home</a>
       </nav>
     </header>
 
     <section class="overview-grid">
       <article class="card">
         <h3>Learning streak</h3>
-        <div class="metric">7 days</div>
+        <div class="metric" id="learningStreakMetric">0 days</div>
         <p>Keep practicing one small security task each day.</p>
       </article>
       <article class="card">
@@ -205,6 +203,7 @@
   <script>
     const moduleStorageKey = 'cyber-awareness-progress';
     const quizStorageKey = 'cyber-awareness-quiz';
+    const streakStorageKey = 'cyber-awareness-streak';
     const moduleNames = [
       'Phishing simulator',
       'Phishing tips',
@@ -221,6 +220,53 @@
       } catch (error) {
         return [];
       }
+    }
+
+    function getStoredStreak() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(streakStorageKey) || '{}');
+        const lastActive = stored.lastActiveDate || null;
+        const streak = Number.isFinite(stored.streak) ? stored.streak : 0;
+        return {
+          lastActiveDate: lastActive,
+          streak: streak > 0 ? streak : 0
+        };
+      } catch (error) {
+        return { lastActiveDate: null, streak: 0 };
+      }
+    }
+
+    function saveStreak(streakData) {
+      const normalized = {
+        lastActiveDate: streakData.lastActiveDate || null,
+        streak: Number.isFinite(streakData.streak) && streakData.streak > 0 ? streakData.streak : 0
+      };
+      localStorage.setItem(streakStorageKey, JSON.stringify(normalized));
+    }
+
+    function getTodayDateString() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function getYesterdayDateString() {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      return yesterday.toISOString().slice(0, 10);
+    }
+
+    function updateLearningStreak() {
+      const streakData = getStoredStreak();
+      const today = getTodayDateString();
+      const yesterday = getYesterdayDateString();
+
+      if (streakData.lastActiveDate === today) {
+        return streakData.streak;
+      }
+
+      const nextStreak = streakData.lastActiveDate === yesterday ? streakData.streak + 1 : 1;
+      const updated = { lastActiveDate: today, streak: nextStreak };
+      saveStreak(updated);
+      return nextStreak;
     }
 
     function saveModules(modules) {
@@ -271,6 +317,12 @@
           item.textContent = modules.includes(moduleName) ? `✓ ${moduleName}` : `• ${moduleName}`;
           moduleList.appendChild(item);
         });
+      }
+
+      const streakMetric = document.getElementById('learningStreakMetric');
+      if (streakMetric) {
+        const streakValue = updateLearningStreak();
+        streakMetric.textContent = `${streakValue} day${streakValue === 1 ? '' : 's'}`;
       }
 
       if (quizScoreMetric) {

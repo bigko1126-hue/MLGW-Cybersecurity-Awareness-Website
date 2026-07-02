@@ -133,7 +133,7 @@ const commonWeakPasswords = [
   'monkeyasdf', 'loginasdf', 'abc1234567890asdf', 'starwarsasdf',
   '123123asdf', 'dragonasdf', 'passw0rddasdf', 'masterasdf',
   'helloasdf', 'freedomasdf', 'whateverasdf', 'qazwsxasdf',
-  'trustno1asdf', '654321asdf', 'supermanasdf', '1q2w3e4rasdf'
+  'trustno1asdf', '654321asdf', 'supermanasdf', '1q2w3e4rasdf', 'Password123!', 'Password!123'
 ];
 
 function evaluatePassword(password) {
