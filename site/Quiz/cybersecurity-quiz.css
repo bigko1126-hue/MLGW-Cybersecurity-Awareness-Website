@@ -1,0 +1,153 @@
+body {
+  font-family: 'Inter', Arial, sans-serif !important;
+  background: radial-gradient(circle at top left, rgba(173, 252, 249, 0.24), transparent 28%), linear-gradient(135deg, #1f3c88 0%, #4f5da8 35%, #7eb2dd 65%, #89a8ff 100%) !important;
+  color: #132144 !important;
+  margin: 0 !important;
+  padding: 30px !important;
+  min-height: 100vh !important;
+  position: relative !important;
+  overflow-x: hidden !important;
+}
+
+body::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: radial-gradient(circle at 20% 20%, rgba(218, 255, 237, 0.24), transparent 16%), radial-gradient(circle at 80% 20%, rgba(255, 206, 84, 0.16), transparent 18%), radial-gradient(circle at 50% 80%, rgba(129, 174, 157, 0.12), transparent 20%) !important;
+  pointer-events: none !important;
+  opacity: 0.8 !important;
+}
+
+.topbar {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  padding: 16px 30px 0 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.topnav {
+  display: flex !important;
+  gap: 10px !important;
+}
+
+.topnav a {
+  text-decoration: none !important;
+  color: #132144 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  transition: background 0.2s ease !important;
+}
+
+.topnav a:hover {
+  background: rgba(255, 255, 255, 1) !important;
+}
+
+.logo-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 25px !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.logo-container img {
+  max-width: 220px !important;
+  height: auto !important;
+}
+
+.quiz-container {
+  max-width: 940px !important;
+  margin: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  padding: 32px !important;
+  border-radius: 22px !important;
+  box-shadow: 0 24px 60px rgba(17, 40, 90, 0.24) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  overflow: hidden !important;
+}
+
+.quiz-container::before {
+  content: '' !important;
+  position: absolute !important;
+  width: 260px !important;
+  height: 260px !important;
+  background: rgba(126, 168, 190, 0.18) !important;
+  border-radius: 50% !important;
+  top: -70px !important;
+  right: -80px !important;
+  filter: blur(12px) !important;
+}
+
+.quiz-container::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 160px !important;
+  height: 160px !important;
+  background: rgba(249, 57, 67, 0.14) !important;
+  border-radius: 50% !important;
+  bottom: -50px !important;
+  left: -60px !important;
+  filter: blur(10px) !important;
+}
+
+h1 {
+  margin-top: 0 !important;
+  color: #102043 !important;
+  letter-spacing: 0.02em !important;
+  font-size: 2.3rem !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.question {
+  margin-bottom: 16px !important;
+  padding: 16px !important;
+  border-radius: 16px !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 24px rgba(17, 40, 90, 0.08) !important;
+}
+
+.question:hover {
+  transform: translateY(-2px) !important;
+}
+
+input[type="radio"] {
+  margin-right: 8px !important;
+}
+
+label {
+  display: block !important;
+  cursor: pointer !important;
+  line-height: 1.5 !important;
+}
+
+button[type="submit"], #takeAgain {
+  background: linear-gradient(135deg, #2563eb, #0f766e) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 10px 18px !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  margin-top: 12px !important;
+}
+
+button[type="submit"]:hover, #takeAgain:hover {
+  transform: translateY(-1px) !important;
+}
+
+#result {
+  margin-top: 18px !important;
+  font-weight: 700 !important;
+}

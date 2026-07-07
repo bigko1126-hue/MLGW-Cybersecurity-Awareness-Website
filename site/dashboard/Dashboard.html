@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Dashboard</title>
+  <style>
+    :root {
+      --bg: #f4f7ff;
+      --panel: #ffffff;
+      --text: #14213d;
+      --muted: #60708f;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --border: #dfe8ff;
+      --shadow: 0 24px 70px rgba(20, 33, 61, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%);
+      color: var(--text);
+    }
+
+    .dashboard-shell {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 20px 24px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .topbar h1 { margin: 0; font-size: 1.35rem; }
+    .topbar p { margin: 4px 0 0; color: var(--muted); }
+
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .topnav a {
+      text-decoration: none;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h2, .card h3 { margin: 0 0 8px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .metric { font-size: 2rem; font-weight: 800; margin-top: 8px; }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 20px;
+    }
+
+    .task-list, .tips-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .task-item, .tip-item {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fbfdff;
+    }
+
+    .task-item strong { display: block; margin-bottom: 4px; }
+    .pill {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .module-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .module-list li {
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #f7faff;
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 760px) {
+      .content-grid { grid-template-columns: 1fr; }
+      .dashboard-shell { padding: 14px; }
+      .topbar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-shell">
+    <header class="topbar">
+      <div>
+        <h1>Security Dashboard</h1>
+        <p>Track your learning progress and build safer habits.</p>
+      </div>
+      <nav class="topnav">
+        <a href="../mainsite/index.html">Home</a>
+      </nav>
+    </header>
+
+    <section class="overview-grid">
+      <article class="card">
+        <h3>Learning streak</h3>
+        <div class="metric" id="learningStreakMetric">0 days</div>
+        <p>Keep practicing one small security task each day.</p>
+      </article>
+      <article class="card">
+        <h3>Completed modules</h3>
+        <div class="metric" id="completedModulesMetric">0/5</div>
+        <p id="moduleSummary">Visit the featured learning tools to build your progress.</p>
+        <ul class="module-list" id="moduleList"></ul>
+      </article>
+      <article class="card">
+        <h3>Quiz performance</h3>
+        <div class="metric" id="quizScoreMetric">—</div>
+        <p id="quizSummary">Take the quiz to save your first score.</p>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="card">
+        <h2>Recommended actions</h2>
+        <ul class="task-list">
+          <li class="task-item">
+            <strong>Review the phishing simulator</strong>
+            <p>Spot suspicious sender details and unusual links.</p>
+            <span class="pill">Practice today</span>
+          </li>
+          <li class="task-item">
+            <strong>Take the quick quiz</strong>
+            <p>Reinforce your awareness with a short knowledge test.</p>
+            <span class="pill">2 min</span>
+          </li>
+          <li class="task-item">
+            <strong>Check your password strength</strong>
+            <p>Use the password checker to improve weak credentials.</p>
+            <span class="pill">Fast</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Helpful reminders</h2>
+        <ul class="tips-list">
+          <li class="tip-item">Use unique passwords for each account.</li>
+          <li class="tip-item">Enable multi-factor authentication where possible.</li>
+          <li class="tip-item">Be cautious with urgent messages that ask for action.</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    const moduleStorageKey = 'cyber-awareness-progress';
+    const quizStorageKey = 'cyber-awareness-quiz';
+    const streakStorageKey = 'cyber-awareness-streak';
+    const moduleNames = [
+      'Phishing simulator',
+      'Phishing tips',
+      'Password checker',
+      'Cybersecurity quiz',
+      'Security dashboard'
+    ];
+
+    function getStoredModules() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(moduleStorageKey) || '[]');
+        if (!Array.isArray(stored)) return [];
+        return [...new Set(stored.map(String).filter(Boolean))];
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function getStoredStreak() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(streakStorageKey) || '{}');
+        const lastActive = stored.lastActiveDate || null;
+        const streak = Number.isFinite(stored.streak) ? stored.streak : 0;
+        return {
+          lastActiveDate: lastActive,
+          streak: streak > 0 ? streak : 0
+        };
+      } catch (error) {
+        return { lastActiveDate: null, streak: 0 };
+      }
+    }
+
+    function saveStreak(streakData) {
+      const normalized = {
+        lastActiveDate: streakData.lastActiveDate || null,
+        streak: Number.isFinite(streakData.streak) && streakData.streak > 0 ? streakData.streak : 0
+      };
+      localStorage.setItem(streakStorageKey, JSON.stringify(normalized));
+    }
+
+    function getTodayDateString() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function getYesterdayDateString() {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      return yesterday.toISOString().slice(0, 10);
+    }
+
+    function updateLearningStreak() {
+      const streakData = getStoredStreak();
+      const today = getTodayDateString();
+      const yesterday = getYesterdayDateString();
+
+      if (streakData.lastActiveDate === today) {
+        return streakData.streak;
+      }
+
+      const nextStreak = streakData.lastActiveDate === yesterday ? streakData.streak + 1 : 1;
+      const updated = { lastActiveDate: today, streak: nextStreak };
+      saveStreak(updated);
+      return nextStreak;
+    }
+
+    function saveModules(modules) {
+      const uniqueModules = [...new Set((Array.isArray(modules) ? modules : []).map(String).filter(Boolean))];
+      localStorage.setItem(moduleStorageKey, JSON.stringify(uniqueModules));
+    }
+
+    function markModule(moduleName) {
+      const modules = getStoredModules();
+      if (!modules.includes(moduleName)) {
+        modules.push(moduleName);
+        saveModules(modules);
+      }
+      return modules;
+    }
+
+    function getQuizStats() {
+      try {
+        return JSON.parse(localStorage.getItem(quizStorageKey) || '{"attempts":0,"bestScore":0,"lastScore":0,"totalQuestions":18}');
+      } catch (error) {
+        return { attempts: 0, bestScore: 0, lastScore: 0, totalQuestions: 18 };
+      }
+    }
+
+    function renderDashboard() {
+      const modules = getStoredModules();
+      const completedModulesMetric = document.getElementById('completedModulesMetric');
+      const moduleSummary = document.getElementById('moduleSummary');
+      const moduleList = document.getElementById('moduleList');
+      const quizScoreMetric = document.getElementById('quizScoreMetric');
+      const quizSummary = document.getElementById('quizSummary');
+      const quizStats = getQuizStats();
+
+      if (completedModulesMetric) {
+        completedModulesMetric.textContent = `${modules.length}/${moduleNames.length}`;
+      }
+
+      if (moduleSummary) {
+        moduleSummary.textContent = modules.length >= moduleNames.length
+          ? 'You have completed every featured module.'
+          : `${modules.length} of ${moduleNames.length} modules completed. Keep exploring to unlock the full path.`;
+      }
+
+      if (moduleList) {
+        moduleList.innerHTML = '';
+        moduleNames.forEach((moduleName) => {
+          const item = document.createElement('li');
+          item.textContent = modules.includes(moduleName) ? `✓ ${moduleName}` : `• ${moduleName}`;
+          moduleList.appendChild(item);
+        });
+      }
+
+      const streakMetric = document.getElementById('learningStreakMetric');
+      if (streakMetric) {
+        const streakValue = updateLearningStreak();
+        streakMetric.textContent = `${streakValue} day${streakValue === 1 ? '' : 's'}`;
+      }
+
+      if (quizScoreMetric) {
+        quizScoreMetric.textContent = quizStats.attempts > 0 ? `${quizStats.bestScore}/${quizStats.totalQuestions}` : '—';
+      }
+
+      if (quizSummary) {
+        quizSummary.textContent = quizStats.attempts > 0
+          ? `Last score: ${quizStats.lastScore}/${quizStats.totalQuestions} · Attempts: ${quizStats.attempts}`
+          : 'Take the quiz to save your first score.';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      markModule('Security dashboard');
+      renderDashboard();
+    });
+  </script>
+</body>
+</html>
