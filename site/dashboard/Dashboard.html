@@ -166,6 +166,12 @@
         <div class="metric" id="quizScoreMetric">—</div>
         <p id="quizSummary">Take the quiz to save your first score.</p>
       </article>
+      <article class="card">
+        <h3>Live visitor activity</h3>
+        <div class="metric" id="visitorsCount">0 visits</div>
+        <p id="visitorSummary">Tracking each visit from this browser.</p>
+        <ul class="module-list" id="visitorList"></ul>
+      </article>
     </section>
 
     <section class="content-grid">
@@ -201,6 +207,7 @@
     </section>
   </div>
 
+  <script src="../visitor-tracker.js"></script>
   <script>
     const moduleStorageKey = 'cyber-awareness-progress';
     const quizStorageKey = 'cyber-awareness-quiz';
