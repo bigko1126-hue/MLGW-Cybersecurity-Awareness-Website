@@ -24,6 +24,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build Pages site
+        run: |
+          mkdir -p site
+          cp -R .vscode/mainsite/. site/
+          mkdir -p site/Quiz
+          cp -R .vscode/Quiz/. site/Quiz/
+          mkdir -p site/dashboard
+          cp -R .vscode/dashboard/. site/dashboard/
+          mkdir -p site/password-checker
+          cp -R .vscode/password-checker/. site/password-checker/
+          mkdir -p site/simulator
+          cp -R .vscode/simulator/. site/simulator/
+          cp .vscode/visitor-tracker.js site/visitor-tracker.js
+          if [ -f CNAME ]; then cp CNAME site/CNAME; fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
